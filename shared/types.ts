@@ -2,15 +2,15 @@
 
 /**
  * Anchor PDS CheckinRecord Definition
- * 
+ *
  * This is the canonical structure for check-in records in the Anchor PDS.
  * It follows AT Protocol lexicon standards and uses structured location data.
- * 
+ *
  * Structure:
  * - Core fields: text (message), createdAt (ISO timestamp)
  * - Locations: Array of community.lexicon.location.* objects (geo and/or address)
  * - Categories: Optional OSM-based categorization with icon support
- * 
+ *
  * Example:
  * {
  *   "$type": "app.dropanchor.checkin",
@@ -26,14 +26,14 @@
  *       "$type": "community.lexicon.location.address",
  *       "street": "123 Main St",
  *       "locality": "New York",
- *       "region": "NY", 
+ *       "region": "NY",
  *       "country": "US",
  *       "postalCode": "10001",
  *       "name": "Brooklyn Boulders"
  *     }
  *   ],
  *   "category": "climbing",
- *   "categoryGroup": "Sports & Fitness", 
+ *   "categoryGroup": "Sports & Fitness",
  *   "categoryIcon": "🧗‍♂️"
  * }
  */
@@ -60,13 +60,13 @@ export type LocationItem = CommunityGeoLocation | CommunityAddressLocation;
 // Main check-in record following the lexicon (clean structure, no legacy fields)
 export interface CheckinRecord {
   $type?: "app.dropanchor.checkin";
-  text: string;                // checkin message/venue name  
-  createdAt: string;          // ISO timestamp
+  text: string; // checkin message/venue name
+  createdAt: string; // ISO timestamp
   locations?: LocationItem[]; // Array of community.lexicon.location.* objects
   // Optional place categorization fields (OSM-based)
-  category?: string;          // OSM category value (e.g., "restaurant", "climbing", "hotel")
-  categoryGroup?: string;     // Human-readable group (e.g., "Food & Drink", "Sports & Fitness")
-  categoryIcon?: string;      // Unicode emoji icon (e.g., "🍽️", "🧗‍♂️", "🏨")
+  category?: string; // OSM category value (e.g., "restaurant", "climbing", "hotel")
+  categoryGroup?: string; // Human-readable group (e.g., "Food & Drink", "Sports & Fitness")
+  categoryIcon?: string; // Unicode emoji icon (e.g., "🍽️", "🧗‍♂️", "🏨")
 }
 
 export interface StoredCheckin extends CheckinRecord {

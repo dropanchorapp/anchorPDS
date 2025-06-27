@@ -23,32 +23,32 @@ app.get("/debug/auth", async (c) => {
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return c.json({
       error: "No auth header",
-      authHeader: authHeader || "missing"
+      authHeader: authHeader || "missing",
     });
   }
 
   const token = authHeader.substring(7);
   console.log(`🔍 Debug auth endpoint called with token: ${token.substring(0, 20)}...`);
-  
+
   try {
     const authContext = await validateToken(token);
     if (authContext) {
       return c.json({
         success: true,
         did: authContext.did,
-        handle: authContext.handle
+        handle: authContext.handle,
       });
     } else {
       return c.json({
         error: "Token validation failed",
-        tokenPrefix: token.substring(0, 20)
+        tokenPrefix: token.substring(0, 20),
       });
     }
   } catch (error) {
     return c.json({
       error: "Exception during validation",
       message: error.message,
-      tokenPrefix: token.substring(0, 20)
+      tokenPrefix: token.substring(0, 20),
     });
   }
 });

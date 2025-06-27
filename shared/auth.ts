@@ -10,7 +10,7 @@ const CACHE_TTL = 3600000; // 1 hour
 
 export async function validateToken(token: string): Promise<AuthContext | null> {
   console.log(`🔐 Validating token: ${token.substring(0, 20)}... (length: ${token.length})`);
-  
+
   // Check cache first
   const cached = didCache.get(token);
   if (cached && cached.expires > Date.now()) {
@@ -29,7 +29,7 @@ export async function validateToken(token: string): Promise<AuthContext | null> 
   for (const pdsHost of commonPDSHosts) {
     try {
       console.log(`🔍 Trying to validate token with ${pdsHost}`);
-      
+
       const sessionResponse = await fetch(`${pdsHost}/xrpc/com.atproto.server.getSession`, {
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -37,12 +37,14 @@ export async function validateToken(token: string): Promise<AuthContext | null> 
         },
       });
 
-      console.log(`📡 Response from ${pdsHost}: ${sessionResponse.status} ${sessionResponse.statusText}`);
+      console.log(
+        `📡 Response from ${pdsHost}: ${sessionResponse.status} ${sessionResponse.statusText}`,
+      );
 
       if (sessionResponse.ok) {
         const session = await sessionResponse.json();
         console.log(`✅ Valid session from ${pdsHost}:`, JSON.stringify(session, null, 2));
-        
+
         const authContext = {
           did: session.did,
           handle: session.handle,

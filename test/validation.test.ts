@@ -303,7 +303,8 @@ Deno.test("Category - category longer than 50 characters should throw error", ()
   const invalidRecord = {
     text: "Test",
     createdAt: "2025-06-27T10:30:00Z",
-    category: "this_is_a_very_long_category_name_that_exceeds_the_fifty_character_limit_imposed_by_validation",
+    category:
+      "this_is_a_very_long_category_name_that_exceeds_the_fifty_character_limit_imposed_by_validation",
   };
 
   assertThrows(
@@ -331,7 +332,8 @@ Deno.test("Category - categoryGroup longer than 50 characters should throw error
   const invalidRecord = {
     text: "Test",
     createdAt: "2025-06-27T10:30:00Z",
-    categoryGroup: "this_is_a_very_long_category_group_name_that_definitely_exceeds_fifty_characters",
+    categoryGroup:
+      "this_is_a_very_long_category_group_name_that_definitely_exceeds_fifty_characters",
   };
 
   assertThrows(
@@ -357,7 +359,7 @@ Deno.test("Category - empty categoryIcon string should throw error", () => {
 
 Deno.test("Category - categoryIcon longer than 10 characters should throw error", () => {
   const invalidRecord = {
-    text: "Test", 
+    text: "Test",
     createdAt: "2025-06-27T10:30:00Z",
     categoryIcon: "🍽️🍺🧗‍♂️🏨🌳🛒📚💊🏛️",
   };
@@ -373,7 +375,7 @@ Deno.test("Category - categoryIcon with valid length should pass", () => {
   const validRecord = {
     text: "Test",
     createdAt: "2025-06-27T10:30:00Z",
-    categoryIcon: "🍽️",  // Single emoji should be under 10 chars
+    categoryIcon: "🍽️", // Single emoji should be under 10 chars
   };
 
   const result = validateCheckinRecord(validRecord);
@@ -384,7 +386,7 @@ Deno.test("Category - real-world category combinations should pass", () => {
   const testCases = [
     {
       category: "restaurant",
-      categoryGroup: "Food & Drink", 
+      categoryGroup: "Food & Drink",
       categoryIcon: "🍽️",
     },
     {

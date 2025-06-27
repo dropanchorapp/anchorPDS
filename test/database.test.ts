@@ -144,7 +144,7 @@ Deno.test("Database - category fields storage and retrieval", () => {
 
   // Test what would be retrieved from database (row data)
   const mockRetrievedRow = insertParams;
-  
+
   const retrievedRecord = {
     $type: "app.dropanchor.checkin",
     id: String(mockRetrievedRow[0]),
