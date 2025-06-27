@@ -1,6 +1,6 @@
 # Anchor Personal Data Server (PDS)
 
-[![Tests](https://github.com/dropanchorapp/anchorPDS/workflows/Tests/badge.svg)](https://github.com/dropanchorapp/anchorPDS/actions)
+[![Tests](https://github.com/dropanchorapp/anchorPDS/actions/workflows/tests.yml/badge.svg)](https://github.com/dropanchorapp/anchorPDS/actions/workflows/tests.yml)
 
 A specialized ATProto server for check-in records, providing location-based social features for the Anchor ecosystem.
 
