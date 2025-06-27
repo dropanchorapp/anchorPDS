@@ -1,0 +1,60 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    name: Test and Lint
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Deno
+      uses: denoland/setup-deno@v2
+      with:
+        deno-version: v2.x
+        
+    - name: Verify Deno installation
+      run: deno --version
+      
+    - name: Cache Deno dependencies
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cache/deno
+          ~/.deno
+        key: ${{ runner.os }}-deno-${{ hashFiles('**/*.ts', '**/deno.json') }}
+        restore-keys: |
+          ${{ runner.os }}-deno-
+          
+    - name: Check formatting
+      run: deno fmt --check
+      
+    - name: Run linter
+      run: deno lint
+      
+    - name: Type check
+      run: deno check --allow-import backend/index.ts
+      
+    - name: Run tests
+      run: deno test --allow-env --allow-net --allow-import test/
+      
+    - name: Generate test coverage
+      run: deno test --allow-env --allow-net --allow-import --coverage=coverage test/
+      
+    - name: Generate coverage report
+      run: deno coverage coverage --lcov --output=coverage.lcov
+      
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage.lcov
+        flags: unittests
+        name: anchorpds-coverage
+        fail_ci_if_error: false

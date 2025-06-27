@@ -1,6 +1,6 @@
 # Anchor Personal Data Server (PDS)
 
-[![Tests](https://github.com/yourusername/anchorPDS/workflows/Tests/badge.svg)](https://github.com/yourusername/anchorPDS/actions)
+[![Tests](https://github.com/dropanchorapp/anchorPDS/workflows/Tests/badge.svg)](https://github.com/dropanchorapp/anchorPDS/actions)
 
 A specialized ATProto server for check-in records, providing location-based social features for the Anchor ecosystem.
 
@@ -65,15 +65,18 @@ Each check-in follows the AT Protocol lexicon standard with structured location 
 ```
 
 #### Core Fields
+
 - **text**: Message or venue name (required)
 - **createdAt**: ISO timestamp (required)
 - **locations**: Array of community.lexicon.location.* objects (optional)
 
 #### Location Objects
+
 - **geo**: GPS coordinates with latitude/longitude as strings
 - **address**: Structured address with name, street, locality, region, country, postalCode
 
 #### Categorization (Optional)
+
 - **category**: [OpenStreetMap](https://wiki.openstreetmap.org/) category value
 - **categoryGroup**: Human-readable group name
 - **categoryIcon**: Unicode emoji representing the category
@@ -99,6 +102,7 @@ The PDS supports rich categorization based on [OpenStreetMap](https://wiki.opens
 #### OpenStreetMap Integration
 
 Categories map to OSM tags and values from these primary keys:
+
 - **[amenity](https://wiki.openstreetmap.org/wiki/Key:amenity)** - Community facilities (66+ categories)
 - **[leisure](https://wiki.openstreetmap.org/wiki/Key:leisure)** - Recreation and sports (40+ categories)  
 - **[shop](https://wiki.openstreetmap.org/wiki/Key:shop)** - Retail and commercial (88+ categories)
