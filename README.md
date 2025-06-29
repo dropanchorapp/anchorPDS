@@ -1,3 +1,5 @@
+***Note: I'm archiving this experiment and consider the ideas herein outdated after some [solid feedback on Bluesky](https://bsky.app/profile/dropanchor.app/post/3lsquxhzyl22y)***, an alternative approach based on the community feedback is in the works. Feel free to poke at what's here i will leave it up as a failed research experiment but it is no longer going to be maintained. 
+
 # Anchor Personal Data Server (PDS)
 
 [![Tests](https://github.com/dropanchorapp/anchorPDS/actions/workflows/tests.yml/badge.svg)](https://github.com/dropanchorapp/anchorPDS/actions/workflows/tests.yml)
